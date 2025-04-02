@@ -133,24 +133,24 @@ body {
     width: 80px;
 }
 
-.post-text {
+.blog-post-text {
     font-size: 1.1rem;
     color: #555555;
 }
 
-.animate-slide-in {
+.blog-animate-slide-in {
     animation: slideIn 1s ease-out;
 }
 
-.animate-fade-in {
+.blog-animate-fade-in {
     animation: fadeIn 1.5s ease-out;
 }
 
-.animate-bounce-in {
+.blog-animate-bounce-in {
     animation: bounceIn 1s ease-out;
 }
 
-.animate-reveal {
+.blog-animate-reveal {
     opacity: 0;
     transform: translateY(50px);
     animation: reveal 0.8s ease-out forwards;
