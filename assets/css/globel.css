@@ -4,7 +4,7 @@
     * @since 01/01/2025
 **/
 
-@import url('https://fonts.googleapis.com/css?family=JetBrains:700|Inter:400');
+@import url('https://fonts.googleapis.com/css?family=Playwrite%20CA');
 
 /* Global Styles */
 :root[data-theme="light"] {
@@ -46,7 +46,7 @@
 
 /* Font */
 h1, h2, h3, h4, h5 {
-    font-family: 'JetBrains';
+    font-family: 'Playwrite CA';
     font-weight: 700;
 }
 
@@ -68,7 +68,7 @@ small {font-size: 0.750rem; /* 12px */}
 /* Global Body */
 body {
     background-color: var(--secondary);
-    font-family: 'Inter';
+    font-family: 'Playwrite CA';
     font-weight: 400;
 }
 /* Global Body */
