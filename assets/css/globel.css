@@ -4,7 +4,7 @@
     * @since 01/01/2025
 **/
 
-@import url('https://fonts.googleapis.com/css?family=Playwrite%20CA');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 /* Global Styles */
 :root[data-theme="light"] {
@@ -46,29 +46,43 @@
 
 /* Font */
 h1, h2, h3, h4, h5 {
-    font-family: 'Playwrite CA';
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
 }
 
-html {font-size: 100%;} /* 16px */
+html {
+    font-size: 100%; /* 16px */
+}
 
-h1 {font-size: 4.210rem; /* 67.36px */}
+h1 {
+    font-size: 4.210rem; /* 67.36px */
+}
 
-h2 {font-size: 3.158rem; /* 50.56px */}
+h2 {
+    font-size: 3.158rem; /* 50.56px */
+}
 
-h3 {font-size: 2.369rem; /* 37.92px */}
+h3 {
+    font-size: 2.369rem; /* 37.92px */
+}
 
-h4 {font-size: 1.777rem; /* 28.48px */}
+h4 {
+    font-size: 1.777rem; /* 28.48px */
+}
 
-h5 {font-size: 1.333rem; /* 21.28px */}
+h5 {
+    font-size: 1.333rem; /* 21.28px */
+}
 
-small {font-size: 0.750rem; /* 12px */}
+small {
+    font-size: 0.750rem; /* 12px */
+}
 /* Font */
 
 /* Global Body */
 body {
     background-color: var(--secondary);
-    font-family: 'Playwrite CA';
+    font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
 /* Global Body */
@@ -78,9 +92,11 @@ body {
     background-color: var(--primary);
     color: var(--text);
 }
+/* Global Selection */
 
+/* Global Selection */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -88,7 +104,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--primary);
+    background-color: var(--secondary);
     border-radius: var(--radius);
 }
 
