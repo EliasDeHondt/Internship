@@ -13,7 +13,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, var(--background), #f5f5f5);
+    background: linear-gradient(135deg, var(--background), var(--background));
     color: var(--text);
     line-height: 1.8;
     overflow-x: hidden;
@@ -86,7 +86,7 @@ body {
     background-color: var(--secondary);
 }
 
-.blog-container {
+.blog-main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 20px;
@@ -98,7 +98,7 @@ body {
 }
 
 .blog-post {
-    background: #ffffff;
+    background: var(--accent);
     padding: 30px;
     border-radius: var(--radius);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -186,7 +186,7 @@ body {
     .blog-title { font-size: 2.5rem; }
     .blog-subtitle { font-size: 1.2rem; }
     .blog-btn { padding: 12px 25px; }
-    .blog-container { padding: 40px 15px; }
+    .blog-main { padding: 40px 15px; }
     .blog-title { font-size: 1.75rem; }
     .post-text { font-size: 1rem; }
 }

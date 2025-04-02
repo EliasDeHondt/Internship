@@ -12,7 +12,7 @@
     --background: #d6d6d6;
     --primary: #e5e566;
     --secondary: #dda027;
-    --accent: #639764;
+    --accent: #d6d6c0;
 }
 
 :root[data-theme="dark"] {
@@ -20,7 +20,7 @@
     --background: #292929;
     --primary: #99991a;
     --secondary: #d89b22;
-    --accent: #689c69;
+    --accent: #22221f;
 }
 
 :root {
