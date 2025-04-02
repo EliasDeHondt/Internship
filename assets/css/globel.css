@@ -1,0 +1,122 @@
+/**
+    * @author  EliasDH Team
+    * @see https://eliasdh.com
+    * @since 01/01/2025
+**/
+
+@import url('https://fonts.googleapis.com/css?family=JetBrains:700|Inter:400');
+
+/* Global Styles */
+:root[data-theme="light"] {
+    --text: #4d3d14;
+    --background: #d6d6d6;
+    --primary: #e5e566;
+    --secondary: #dda027;
+    --accent: #639764;
+}
+
+:root[data-theme="dark"] {
+    --text: #ebdbb2;
+    --background: #292929;
+    --primary: #99991a;
+    --secondary: #d89b22;
+    --accent: #689c69;
+}
+
+:root {
+    --radius: 12px;
+    --spacing: 16px;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+/* Global Styles */
+
+/* Cursor */
+* {
+    cursor: url('/assets/media/svg/cursor-auto.svg'), auto;
+}
+
+.cursor-default {
+    cursor: url('/assets/media/svg/cursor-default.svg'), default;
+}
+
+.cursor-pointer {
+    cursor: url('/assets/media/svg/cursor-pointer.svg'), pointer;
+}
+/* Cursor */
+
+/* Font */
+h1, h2, h3, h4, h5 {
+    font-family: 'JetBrains';
+    font-weight: 700;
+}
+
+html {font-size: 100%;} /* 16px */
+
+h1 {font-size: 4.210rem; /* 67.36px */}
+
+h2 {font-size: 3.158rem; /* 50.56px */}
+
+h3 {font-size: 2.369rem; /* 37.92px */}
+
+h4 {font-size: 1.777rem; /* 28.48px */}
+
+h5 {font-size: 1.333rem; /* 21.28px */}
+
+small {font-size: 0.750rem; /* 12px */}
+/* Font */
+
+/* Global Body */
+body {
+    background-color: var(--secondary);
+    font-family: 'Inter';
+    font-weight: 400;
+}
+/* Global Body */
+
+/* Global Selection */
+::selection {
+    background-color: var(--primary);
+    color: var(--text);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: var(--radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--secondary);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: var(--primary);
+}
+
+::-webkit-scrollbar-corner {
+    background-color: var(--primary);
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-track-piece {
+    display: none;
+}
+
+::-webkit-scrollbar-corner {
+    display: none;
+}
+
+::-webkit-resizer {
+    display: none;
+}
+/* Global Selection */
