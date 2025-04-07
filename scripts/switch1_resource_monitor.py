@@ -61,26 +61,19 @@ class Agent(NAE):
         mm1_medium_term_cpu_uri = AverageOverTime(
             mm1_cpu_uri, medium_term_time_period, param_list)
         self.mm1_medium_term_cpu_mon = \
-            Monitor(mm1_medium_term_cpu_uri,
-                    'Medium-Term CPU (CPU/Memory utilization in %)')
+            Monitor(mm1_medium_term_cpu_uri, 'Medium-Term CPU (CPU/Memory utilization in %)')
         self.r1.condition(
             '{} > {}',
-            [self.mm1_medium_term_cpu_mon,
-                self.params['medium_term_high_threshold']])
+            [self.mm1_medium_term_cpu_mon, self.params['medium_term_high_threshold']])
         self.r1.action(self.action_major_cpu)
 
         self.r2 = Rule('Medium-Term Normal CPU')
         self.r2.condition(
             '{} < {}',
-            [self.mm1_medium_term_cpu_mon,
-                self.params['medium_term_normal_threshold']])
+            [self.mm1_medium_term_cpu_mon, self.params['medium_term_normal_threshold']])
         self.r2.action(self.action_cpu_normal_major)
 
-        # memory monitors
-        self.mm1_mem_mon = Monitor(
-            mm1_mem_uri,
-            'Memory raw (CPU/Memory utilization in %)',
-            param_list)
+        self.mm1_mem_mon = Monitor(mm1_mem_uri, 'Memory raw (CPU/Memory utilization in %)', param_list)
 
         self.r3 = Rule('Medium-Term High Memory')
         mm1_medium_term_mem_uri = AverageOverTime(
@@ -201,11 +194,9 @@ class Agent(NAE):
             self.set_agent_alert_level()
 
     def action_memory(self, event, threshold, time_period):
-        rule_name, subsystem, utilization = \
-            self.parse_utilization(event, math.ceil)
+        rule_name, subsystem, utilization = self.parse_utilization(event, math.ceil)
         mgmt_module = self.get_mgmt_module(event['labels'])
-        trap_message = '{}. Subsystem {}. Memory utilization {}%.'.format(
-                        rule_name, subsystem, utilization)
+        trap_message = '{}. Subsystem {}. Memory utilization {}%.'.format(rule_name, subsystem, utilization)
         ActionSNMP(trap_message)
         ActionSyslog(
             'Average ' + mgmt_module + ' Memory utilization over last ' +
@@ -231,11 +222,9 @@ class Agent(NAE):
             self.set_agent_alert_level()
 
     def action_memory_normal(self, event, threshold, time_period):
-        rule_name, subsystem, utilization = \
-            self.parse_utilization(event, math.floor)
+        rule_name, subsystem, utilization = self.parse_utilization(event, math.floor)
         mgmt_module = self.get_mgmt_module(event['labels'])
-        trap_message = '{}. Subsystem {}. Memory utilization {}%.'.format(
-                        rule_name, subsystem, utilization)
+        trap_message = '{}. Subsystem {}. Memory utilization {}%.'.format(rule_name, subsystem, utilization)
         ActionSNMP(trap_message)
         ActionSyslog(
             'Average ' + mgmt_module + 'Memory utilization over last {} ' +

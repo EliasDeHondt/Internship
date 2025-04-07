@@ -6,6 +6,7 @@
 # This script monitors the VLAN configuration and traffic of a switch.
 
 
+
 Manifest = {
     'Name': 'switch1_vlan_monitor',
     'Description': 'Monitors all VLANs on the switch, including configuration and traffic statistics',
