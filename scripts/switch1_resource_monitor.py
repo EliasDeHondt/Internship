@@ -7,92 +7,11 @@ import math
 from json import dumps
 
 Manifest = {
-    'Name': 'system_resource_monitor',
-    'Description': 'System Resource (CPU/Memory) Monitoring agent',
-    'Version': '1.5',
-    'Tags': ['device'],
-    'Author': 'Aruba Networks'
-}
-
-ParameterDefinitions = {
-    'short_term_high_threshold': {
-        'Name': 'Average CPU/Memory utilization in percentage '
-                'in a short period of offence to set Minor alert',
-        'Description': 'Deprecated: when average CPU/Memory utilization exceeds '
-                        'this value, agent status will be set to Minor '
-                        'and agent will log all system daemons '
-                        'CPU/Memory utilization details with CoPP statistics',
-        'Type': 'integer',
-        'Default': 90
-    },
-    'short_term_normal_threshold': {
-        'Name': 'Average CPU/Memory utilization in percentage in '
-                'a short period of offence to unset Minor alert',
-        'Description': 'Deprecated: when average CPU/Memory utilization is below '
-                        'this value, Minor status will be unset.',
-        'Type': 'integer',
-        'Default': 80
-    },
-    'short_term_time_period': {
-        'Name': 'Time interval in minutes to consider average CPU/Memory '
-                'utilization for Short Term thresholds',
-        'Description': 'Deprecated: time interval to consider average CPU/Memory '
-                        'utilization for Short Term thresholds',
-        'Type': 'integer',
-        'Default': 5
-    },
-    'medium_term_high_threshold': {
-        'Name': 'Average CPU/Memory utilization in percentage over '
-                'a medium period of offence to set Major alert.',
-        'Description': 'When average CPU/Memory utilization exceeds '
-                        'this value, agent status will be set to Major '
-                        'and agent will log all system daemons '
-                        'CPU/Memory utilization details with CoPP statistics.',
-        'Type': 'integer',
-        'Default': 80
-    },
-    'medium_term_normal_threshold': {
-        'Name': 'Average CPU/Memory utilization in percentage over '
-                'a medium period of offence to unset Major alert',
-        'Description': 'When average CPU/Memory utilization is below '
-                        'this vlaue, Major status will be unset.',
-        'Type': 'integer',
-        'Default': 60
-    },
-    'medium_term_time_period': {
-        'Name': 'Time interval in minutes to consider average CPU/Memory '
-                'utilization for Medium Term thresholds',
-        'Description': 'Time interval to consider average CPU/Memory '
-                        'utilization for Medium Term thresholds',
-        'Type': 'integer',
-        'Default': 120
-    },
-    'long_term_high_threshold': {
-        'Name': 'Average CPU/Memory utilization in percentage for '
-                'a sustained long period of offence to set Critical alert',
-        'Description': 'Deprecated: when average CPU/Memory utilization exceeds '
-                        'this value, agent status will be set to Critical '
-                        'and agent will log all system daemons '
-                        'CPU/Memory utilization details with CoPP statistics.',
-        'Type': 'integer',
-        'Default': 70
-    },
-    'long_term_normal_threshold': {
-        'Name': 'Average CPU/Memory utilization in percentage for '
-                'a sustained long period of offence to unset Critical alert',
-        'Description': 'Deprecated: when average CPU/Memory utilization is below '
-                        'this value, Critical status will be unset.',
-        'Type': 'integer',
-        'Default': 60
-    },
-    'long_term_time_period': {
-        'Name': 'Time interval in minutes to consider average CPU/Memory '
-                'utilization for Long Term thresholds',
-        'Description': 'Deprecated: time interval to consider average CPU/Memory '
-                        'utilization for Long Term thresholds',
-        'Type': 'integer',
-        'Default': 480
-    }
+    'Name': 'switch1_resource_monitor',
+    'Description': 'This script monitors the CPU and memory utilization of the management module.',
+    'Version': '1.0',
+    'Tags': ['network', 'traffic'],
+    'Author': 'Elias De Hondt'
 }
 
 class Agent(NAE):
