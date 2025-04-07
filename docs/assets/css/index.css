@@ -1,0 +1,79 @@
+/**
+    * @author  EliasDH Team
+    * @see https://eliasdh.com
+    * @since 01/01/2025
+**/
+
+@import url('/assets/css/globel.css');
+
+.index-body,
+.index-html,
+.index-main {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.index-body,
+.index-html,
+.index-main {
+    height: 100%;
+}
+
+.index-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.index-location {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 0 2px 4px var(--shadow);
+    transition: flex 0.5s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.index-location.index-eliasdehondt {
+    background-image: url('/assets/media/images/index-eliasdehondt.png');
+}
+
+.index-location.index-kobewijnants {
+    background-image: url('/assets/media/images/index-kobewijnants.png');
+}
+
+.index-location:hover {
+    flex: 2;
+}
+
+.index-location .index-text {
+    position: absolute;
+    z-index: 1;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    background-color: var(--primary);
+    padding: 10px;
+    border-radius: var(--radius);
+    color: var(--text);
+}
+
+.index-location:hover .index-text {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.index-divider {
+    width: 2px;
+    background-color: var(--secondary);
+    opacity: 0.5;
+}
