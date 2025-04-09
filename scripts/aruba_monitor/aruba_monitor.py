@@ -16,16 +16,29 @@ hover_color = "#E9C05F"
 font_name = "Helvetica"
 
 class ArubaMonitor:
-    def __init__(self, ip, username, password, api_version="v10.11"):
+    def __init__(self, api_version="v10.11"):
+        self.api_version = api_version
+        self.ip = None
+        self.username = None
+        self.password = None
+
+    def set_credentials(self, ip, username, password):
         self.ip = ip
         self.username = username
         self.password = password
-        self.api_version = api_version
 
     def get_session_cookie(self):
+        if not all([self.ip, self.username, self.password]):
+            return "Error: Missing credentials"
+        
         login_url = f"https://{self.ip}/rest/{self.api_version}/login"
         try:
-            response = requests.post(login_url, data={"username": self.username, "password": self.password}, verify=False, timeout=10)
+            response = requests.post(
+                login_url, 
+                data={"username": self.username, "password": self.password}, 
+                verify=False, 
+                timeout=10
+            )
             response.raise_for_status()
             if response.cookies:
                 return dict(response.cookies)
@@ -34,7 +47,18 @@ class ArubaMonitor:
         except requests.exceptions.RequestException as error:
             return f"Error: {error}"
     
-    def test_login(self):
+    def test_login(self, ip_entry, username_entry, password_entry):
+        ip = ip_entry.get()
+        username = username_entry.get()
+        password = password_entry.get()
+
+        if any(not value or value in ["Enter Switch IP", "Enter Username", "Enter Password"] 
+            for value in [ip, username, password]):
+            messagebox.showerror("Input Error", "Please fill in all fields", parent=root)
+            return
+
+        self.set_credentials(ip, username, password)
+        
         result = self.get_session_cookie()
         if isinstance(result, dict):
             messagebox.showinfo("Login Successful", f"{result}", parent=root)
@@ -90,28 +114,34 @@ def setup_ui(monitor):
     title_label = ttk.Label(main_frame, text="Aruba Monitor", font=(font_name, 18, "bold"), foreground=secondary_color)
     title_label.grid(row=0, column=0, columnspan=2, pady=(0, 20))
 
+    # Input IP
     ip_entry = ttk.Entry(main_frame, width=25, style="Rounded.TEntry")
     ip_entry.grid(row=1, column=1, pady=5)
     add_placeholder(ip_entry, "Enter Switch IP")
 
+    # Input Username
     username_entry = ttk.Entry(main_frame, width=25, style="Rounded.TEntry")
     username_entry.grid(row=2, column=1, pady=5)
     add_placeholder(username_entry, "Enter Username")
 
+    # Input Password
     password_entry = ttk.Entry(main_frame, width=25, show="*", style="Rounded.TEntry")
     password_entry.grid(row=3, column=1, pady=5)
     add_placeholder(password_entry, "Enter Password")
 
     # Button
-    test_button = ttk.Button(main_frame, text="Test Login", command=monitor.test_login)
+    test_button = ttk.Button(
+        main_frame, 
+        text="Test Login", 
+        command=lambda: monitor.test_login(ip_entry, username_entry, password_entry)
+    )
     test_button.grid(row=4, column=0, columnspan=2, pady=20)
 
     # Footer
-    footer = ttk.Label(root, text="Designed by The University of Buckingham", font=(font_name, 10), foreground=secondary_color, background=primary_color)  # Vergroot naar 10
+    footer = ttk.Label(root, text="Designed by The University of Buckingham", font=(font_name, 10), foreground=secondary_color, background=primary_color)
     footer.pack(side=tk.BOTTOM, pady=10)
 
     return root
 
-
-monitor = ArubaMonitor(ip="10.18.71.1", username="admin", password="GnR:sc0m", api_version="v10.11")
+monitor = ArubaMonitor(api_version="v10.11")
 setup_ui(monitor).mainloop()
