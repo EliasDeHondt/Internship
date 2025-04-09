@@ -1,13 +1,11 @@
-############################
-# @author Elias De Hondt   #
-# @since 01/01/2025        #
-############################
-
 import requests
 import tkinter as tk
 from tkinter import messagebox, ttk
 from PIL import Image, ImageTk
 import os
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import time
 
 primary_color = "#1E1E1E"
 secondary_color = "#FFFFFF"
@@ -21,6 +19,10 @@ class ArubaMonitor:
         self.ip = None
         self.username = None
         self.password = None
+        self.session_cookie = None
+        self.cpu_data = []
+        self.timestamps = []
+        self.cpu_window = None
 
     def set_credentials(self, ip, username, password):
         self.ip = ip
@@ -41,18 +43,19 @@ class ArubaMonitor:
             )
             response.raise_for_status()
             if response.cookies:
-                return dict(response.cookies)
+                self.session_cookie = dict(response.cookies)
+                return self.session_cookie
             else:
                 return "Failed"
         except requests.exceptions.RequestException as error:
             return f"Error: {error}"
     
-    def test_login(self, ip_entry, username_entry, password_entry):
+    def Login(self, ip_entry, username_entry, password_entry):
         ip = ip_entry.get()
         username = username_entry.get()
         password = password_entry.get()
 
-        if any(not value or value in ["Enter Switch IP", "Enter Username", "Enter Password"] 
+        if any(not value or value in ["|Enter Switch IP", "Enter Username", "Enter Password"] 
             for value in [ip, username, password]):
             messagebox.showerror("Input Error", "Please fill in all fields", parent=root)
             return
@@ -61,9 +64,79 @@ class ArubaMonitor:
         
         result = self.get_session_cookie()
         if isinstance(result, dict):
-            messagebox.showinfo("Login Successful", f"{result}", parent=root)
+            messagebox.showinfo("Login Successful", "Login successful! Session cookie obtained.", parent=root)
         else:
             messagebox.showerror("Login Failed", f"{result}", parent=root)
+
+    def get_interfaces(self):
+        if not self.session_cookie:
+            messagebox.showerror("Error", "Please log in first!", parent=root)
+            return
+
+        interfaces_url = f"https://{self.ip}/rest/{self.api_version}/system/interfaces"
+        try:
+            response = requests.get(interfaces_url, cookies=self.session_cookie, verify=False, timeout=10)
+            response.raise_for_status()
+            interfaces = response.json()
+
+            self.show_interfaces(interfaces)
+        except requests.exceptions.RequestException as error:
+            messagebox.showerror("Error", f"Failed to retrieve interfaces: {error}", parent=root)
+
+    def show_interfaces(self, interfaces):
+        interface_window = tk.Toplevel(root)
+        interface_window.title("The University of Buckingham - Interfaces")
+        interface_window.geometry("400x500")
+        interface_window.configure(bg=primary_color)
+
+        icon_path = 'favicon.png'
+        if os.path.exists(icon_path):
+            interface_window.wm_iconphoto(False, ImageTk.PhotoImage(Image.open(icon_path)))
+
+        scrollbar = ttk.Scrollbar(interface_window)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+        listbox = tk.Listbox(interface_window, bg=primary_color, fg=secondary_color, font=(font_name, 12), yscrollcommand=scrollbar.set)
+        listbox.pack(fill=tk.BOTH, expand=True)
+        scrollbar.config(command=listbox.yview)
+
+        for interface in interfaces:
+            listbox.insert(tk.END, f"Interface: {interface.name} - Status: {interface.status.netdev_state}")
+
+    def get_users(self):
+        if not self.session_cookie:
+            messagebox.showerror("Error", "Please log in first!", parent=root)
+            return
+
+        users_url = f"https://{self.ip}/rest/{self.api_version}/system/users"
+        try:
+            response = requests.get(users_url, cookies=self.session_cookie, verify=False, timeout=10)
+            response.raise_for_status()
+            users = response.json()
+
+            self.show_users(users)
+        except requests.exceptions.RequestException as error:
+            messagebox.showerror("Error", f"Failed to retrieve users: {error}", parent=root)
+
+    def show_users(self, users):
+        user_window = tk.Toplevel(root)
+        user_window.title("The University of Buckingham - Users")
+        user_window.geometry("400x500")
+        user_window.configure(bg=primary_color)
+
+        icon_path = 'favicon.png'
+        if os.path.exists(icon_path):
+            user_window.wm_iconphoto(False, ImageTk.PhotoImage(Image.open(icon_path)))
+
+        scrollbar = ttk.Scrollbar(user_window)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+        listbox = tk.Listbox(user_window, bg=primary_color, fg=secondary_color, font=(font_name, 12), yscrollcommand=scrollbar.set)
+        listbox.pack(fill=tk.BOTH, expand=True)
+        scrollbar.config(command=listbox.yview)
+
+        for user in users:
+            listbox.insert(tk.END, f"User: {user.username}")
 
 def add_placeholder(entry, placeholder):
     entry.insert(0, placeholder)
@@ -86,7 +159,7 @@ def setup_ui(monitor):
     global root
     root = tk.Tk()
     root.title("The University of Buckingham - Aruba Monitor")
-    root.geometry("450x300")
+    root.geometry("500x350")
     root.resizable(False, False)
     root.configure(bg=primary_color)
 
@@ -107,12 +180,11 @@ def setup_ui(monitor):
     # Main frame
     main_frame = ttk.Frame(root, padding="20", style="Main.TFrame")
     main_frame.pack(expand=True)
-
     style.configure("Main.TFrame", background=primary_color)
 
     # Title label
-    title_label = ttk.Label(main_frame, text="Aruba Monitor", font=(font_name, 18, "bold"), foreground=secondary_color)
-    title_label.grid(row=0, column=0, columnspan=2, pady=(0, 20))
+    title_label = ttk.Label(main_frame, text="Aruba Monitor", font=(font_name, 20, "bold"), foreground=secondary_color)
+    title_label.grid(row=0, column=1, pady=(0, 20))
 
     # Input IP
     ip_entry = ttk.Entry(main_frame, width=25, style="Rounded.TEntry")
@@ -129,13 +201,17 @@ def setup_ui(monitor):
     password_entry.grid(row=3, column=1, pady=5)
     add_placeholder(password_entry, "Enter Password")
 
-    # Button
-    test_button = ttk.Button(
-        main_frame, 
-        text="Test Login", 
-        command=lambda: monitor.test_login(ip_entry, username_entry, password_entry)
-    )
-    test_button.grid(row=4, column=0, columnspan=2, pady=20)
+    # Button Login
+    test_button = ttk.Button(main_frame, text="Login", command=lambda: monitor.Login(ip_entry, username_entry, password_entry))
+    test_button.grid(row=4, column=0, pady=10)
+
+    # Button Interface
+    cpu_button = ttk.Button(main_frame, text="Get Interface", command=monitor.get_interfaces)
+    cpu_button.grid(row=4, column=1, pady=5)
+
+    # Button User
+    cpu_button = ttk.Button(main_frame, text="Get User", command=monitor.get_users)
+    cpu_button.grid(row=4, column=2, pady=5)
 
     # Footer
     footer = ttk.Label(root, text="Designed by The University of Buckingham", font=(font_name, 10), foreground=secondary_color, background=primary_color)
