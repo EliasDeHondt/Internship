@@ -1,6 +1,7 @@
 ############################
-# @author Elias De Hondt   #
-# @since 07/04/2025        #
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
 ############################
 # type: ignore[annotation-unchecked]
 
