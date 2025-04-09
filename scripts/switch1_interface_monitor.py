@@ -1,3 +1,9 @@
+############################
+# @author Kobe Wijnants    #
+# @since 01/01/2025        #
+############################
+# type: ignore[annotation-unchecked]
+
 Manifest = {
     "Name": "switch1_interface_monitor",
     "Description": "Physical Interface Tx/Rx statistics monitoring agent"
@@ -22,10 +28,9 @@ ParameterDefinitions = {
     },
 }
 
-
 class Agent(NAE):
     def __init__(self):
-        # rx packets
+        # Rx packets
         uri1 = (
             "/rest/v1/system/interfaces/*?attributes=statistics.rx_packets"
             + "&filter=type:system"
@@ -40,14 +45,14 @@ class Agent(NAE):
         self.r1.action("ALERT_LEVEL", AlertLevel.CRITICAL)
         self.r1.clear_action("ALERT_LEVEL", AlertLevel.NONE)
 
-        # rx packets dropped
+        # Rx packets dropped
         uri2 = (
             "/rest/v1/system/interfaces/*?attributes=statistics.rx_dropped"
             + "&filter=type:system"
         )
         self.m2 = Monitor(uri2, "Rx Packets Dropped (packets)")
 
-        # tx packets
+        # Tx packets
         uri3 = (
             "/rest/v1/system/interfaces/*?attributes=statistics.tx_packets"
             + "&filter=type:system"
@@ -63,14 +68,14 @@ class Agent(NAE):
         self.r3.action("ALERT_LEVEL", AlertLevel.CRITICAL)
         self.r3.clear_action("ALERT_LEVEL", AlertLevel.NONE)
 
-        # tx packets dropped
+        # Tx packets dropped
         uri4 = (
             "/rest/v1/system/interfaces/*?attributes=statistics.tx_dropped"
             + "&filter=type:system"
         )
         self.m4 = Monitor(uri4, "Tx Packets Dropped (packets)")
 
-        # graph display for change of traffic and packets drop
+        # Graph display for change of traffic and packets drop
         self.graph_tx_rx_packets = Graph(
             [self.m1, self.m3],
             title=Title("Rate of change of Interface Tx/Rx packets (in seconds)"),
