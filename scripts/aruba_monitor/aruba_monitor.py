@@ -100,8 +100,8 @@ class ArubaMonitor:
         listbox.pack(fill=tk.BOTH, expand=True)
         scrollbar.config(command=listbox.yview)
 
-        for interface in interfaces:
-            listbox.insert(tk.END, f"Interface: {interface.name} - Status: {interface.status.netdev_state}")
+        for key in interfaces.keys():
+            listbox.insert(tk.END, f"Interface name: {key}")
 
     def get_users(self):
         if not self.session_cookie:
