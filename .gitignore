@@ -6,3 +6,6 @@
 # Ignore default
 .vscode
 .venv
+/scripts/aruba_monitor/aruba_monitor.spec
+/scripts/aruba_monitor/build
+/scripts/aruba_monitor/dist

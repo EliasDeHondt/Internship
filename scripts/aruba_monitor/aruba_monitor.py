@@ -1,11 +1,19 @@
+############################
+# @author Elias De Hondt   #
+# @since 01/01/2025        #
+############################
+# git clone https://github.com/EliasDeHondt/Internship.git
+# cd Internship/scripts/aruba_monitor
+# pip install -r requirements.txt
+# pip install pyinstaller
+# pyinstaller --onefile --icon=favicon.ico aruba_monitor.py
+# dist/aruba_monitor.exe
+
 import requests
 import tkinter as tk
 from tkinter import messagebox, ttk
 from PIL import Image, ImageTk
 import os
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import time
 
 primary_color = "#1E1E1E"
 secondary_color = "#FFFFFF"
@@ -89,7 +97,7 @@ class ArubaMonitor:
         interface_window.geometry("400x500")
         interface_window.configure(bg=primary_color)
 
-        icon_path = 'favicon.png'
+        icon_path = 'favicon.ico'
         if os.path.exists(icon_path):
             interface_window.wm_iconphoto(False, ImageTk.PhotoImage(Image.open(icon_path)))
 
@@ -124,7 +132,7 @@ class ArubaMonitor:
         user_window.geometry("400x500")
         user_window.configure(bg=primary_color)
 
-        icon_path = 'favicon.png'
+        icon_path = 'favicon.ico'
         if os.path.exists(icon_path):
             user_window.wm_iconphoto(False, ImageTk.PhotoImage(Image.open(icon_path)))
 
@@ -163,7 +171,7 @@ def setup_ui(monitor):
     root.resizable(False, False)
     root.configure(bg=primary_color)
 
-    icon_path = 'favicon.png'
+    icon_path = 'favicon.ico'
     if os.path.exists(icon_path):
         root.wm_iconphoto(False, ImageTk.PhotoImage(Image.open(icon_path)))
 
