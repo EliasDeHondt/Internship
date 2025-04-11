@@ -30,6 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
         img.src = `${imageFolder}${imageName}`;
         img.alt = `Image ${index + 1} from internship`;
 
+        img.onload = () => {
+            galleryItem.style.width = `${img.naturalWidth}px`;
+            galleryItem.style.maxWidth = '100%';
+        };
+
         const caption = document.createElement('div');
         caption.classList.add('images-item-caption');
         caption.textContent = imageName.split('.')[0].replace(/_/g, ' ');
