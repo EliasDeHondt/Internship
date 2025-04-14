@@ -2,19 +2,18 @@
 # @author Elias De Hondt   #
 # @since 01/01/2025        #
 ############################
-# git clone https://github.com/EliasDeHondt/Internship.git
-# cd Internship/scripts/aruba_monitor
-# pip install -r requirements.txt
-# pip install pyinstaller
-# pyinstaller --onefile --icon=favicon.ico aruba_monitor.py
-# dist/aruba_monitor.exe
+# type: ignore[annotation-unchecked]
 
 import requests
 import tkinter as tk
 from tkinter import messagebox, ttk
 from PIL import Image, ImageTk
 import os
+import urllib3
 
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+# Kleuren en instellingen blijven ongewijzigd
 primary_color = "#1E1E1E"
 secondary_color = "#FFFFFF"
 accent_color = "#E9C43B"
@@ -63,7 +62,7 @@ class ArubaMonitor:
         username = username_entry.get()
         password = password_entry.get()
 
-        if any(not value or value in ["|Enter Switch IP", "Enter Username", "Enter Password"] 
+        if any(not value or value in ["Enter Switch IP", "Enter Username", "Enter Password"] 
             for value in [ip, username, password]):
             messagebox.showerror("Input Error", "Please fill in all fields", parent=root)
             return
@@ -75,23 +74,44 @@ class ArubaMonitor:
             messagebox.showinfo("Login Successful", "Login successful! Session cookie obtained.", parent=root)
         else:
             messagebox.showerror("Login Failed", f"{result}", parent=root)
-
+    
     def get_interfaces(self):
         if not self.session_cookie:
-            messagebox.showerror("Error", "Please log in first!", parent=root)
-            return
+            return None
 
         interfaces_url = f"https://{self.ip}/rest/{self.api_version}/system/interfaces"
         try:
             response = requests.get(interfaces_url, cookies=self.session_cookie, verify=False, timeout=10)
             response.raise_for_status()
-            interfaces = response.json()
-
-            self.show_interfaces(interfaces)
+            return response.json()
         except requests.exceptions.RequestException as error:
-            messagebox.showerror("Error", f"Failed to retrieve interfaces: {error}", parent=root)
+            return f"Error: {error}"
+        
+    def get_interface_by_name(self, interface_name):
+        if not self.session_cookie:
+            return None
 
-    def show_interfaces(self, interfaces):
+        interface_url = f"https://{self.ip}/rest/{self.api_version}/system/interfaces/{interface_name}"
+        try:
+            response = requests.get(interface_url, cookies=self.session_cookie, verify=False, timeout=10)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as error:
+            return f"Error: {error}"
+
+    def show_interfaces(self):
+        if not self.session_cookie:
+            messagebox.showerror("Error", "Please log in first!", parent=root)
+            return
+
+        interfaces = self.get_interfaces()
+        if not interfaces:
+            messagebox.showerror("Error", "Failed to retrieve interfaces", parent=root)
+            return
+        if isinstance(interfaces, str):
+            messagebox.showerror("Error", interfaces, parent=root)
+            return
+
         interface_window = tk.Toplevel(root)
         interface_window.title("The University of Buckingham - Interfaces")
         interface_window.geometry("400x500")
@@ -109,24 +129,37 @@ class ArubaMonitor:
         scrollbar.config(command=listbox.yview)
 
         for key in interfaces.keys():
-            listbox.insert(tk.END, f"Interface name: {key}")
+            interface_data = self.get_interface_by_name(key)
+            if 'admin_state' in interface_data:
+                listbox.insert(tk.END, f"Interface name: {key} - {interface_data['admin_state']}")
+            else:
+                listbox.insert(tk.END, f"Interface name: {key}")
 
     def get_users(self):
         if not self.session_cookie:
-            messagebox.showerror("Error", "Please log in first!", parent=root)
-            return
+            return None
 
         users_url = f"https://{self.ip}/rest/{self.api_version}/system/users"
         try:
             response = requests.get(users_url, cookies=self.session_cookie, verify=False, timeout=10)
             response.raise_for_status()
-            users = response.json()
-
-            self.show_users(users)
+            return response.json()
         except requests.exceptions.RequestException as error:
-            messagebox.showerror("Error", f"Failed to retrieve users: {error}", parent=root)
+            return f"Error: {error}"
 
-    def show_users(self, users):
+    def show_users(self):
+        if not self.session_cookie:
+            messagebox.showerror("Error", "Please log in first!", parent=root)
+            return
+
+        users = self.get_users()
+        if not users:
+            messagebox.showerror("Error", "Failed to retrieve users", parent=root)
+            return
+        if isinstance(users, str):
+            messagebox.showerror("Error", users, parent=root)
+            return
+
         user_window = tk.Toplevel(root)
         user_window.title("The University of Buckingham - Users")
         user_window.geometry("400x500")
@@ -143,8 +176,8 @@ class ArubaMonitor:
         listbox.pack(fill=tk.BOTH, expand=True)
         scrollbar.config(command=listbox.yview)
 
-        for user in users:
-            listbox.insert(tk.END, f"User: {user.username}")
+        for key in users.keys():
+            listbox.insert(tk.END, f"User name: {key}")
 
 def add_placeholder(entry, placeholder):
     entry.insert(0, placeholder)
@@ -185,43 +218,34 @@ def setup_ui(monitor):
     style.element_create("Rounded.Entry", "from", "clam")
     style.configure("Rounded.TEntry", bordercolor=secondary_color, lightcolor=primary_color, darkcolor=primary_color, borderwidth=1)
 
-    # Main frame
     main_frame = ttk.Frame(root, padding="20", style="Main.TFrame")
     main_frame.pack(expand=True)
     style.configure("Main.TFrame", background=primary_color)
 
-    # Title label
     title_label = ttk.Label(main_frame, text="Aruba Monitor", font=(font_name, 20, "bold"), foreground=secondary_color)
     title_label.grid(row=0, column=1, pady=(0, 20))
 
-    # Input IP
     ip_entry = ttk.Entry(main_frame, width=25, style="Rounded.TEntry")
     ip_entry.grid(row=1, column=1, pady=5)
     add_placeholder(ip_entry, "Enter Switch IP")
 
-    # Input Username
     username_entry = ttk.Entry(main_frame, width=25, style="Rounded.TEntry")
     username_entry.grid(row=2, column=1, pady=5)
     add_placeholder(username_entry, "Enter Username")
 
-    # Input Password
     password_entry = ttk.Entry(main_frame, width=25, show="*", style="Rounded.TEntry")
     password_entry.grid(row=3, column=1, pady=5)
     add_placeholder(password_entry, "Enter Password")
 
-    # Button Login
     test_button = ttk.Button(main_frame, text="Login", command=lambda: monitor.Login(ip_entry, username_entry, password_entry))
     test_button.grid(row=4, column=0, pady=10)
 
-    # Button Interface
-    cpu_button = ttk.Button(main_frame, text="Get Interface", command=monitor.get_interfaces)
-    cpu_button.grid(row=4, column=1, pady=5)
+    interfaces_button = ttk.Button(main_frame, text="Show Interface", command=monitor.show_interfaces)
+    interfaces_button.grid(row=4, column=1, pady=5)
 
-    # Button User
-    cpu_button = ttk.Button(main_frame, text="Get User", command=monitor.get_users)
-    cpu_button.grid(row=4, column=2, pady=5)
+    users_button = ttk.Button(main_frame, text="Show Users", command=monitor.show_users)
+    users_button.grid(row=4, column=2, pady=5)
 
-    # Footer
     footer = ttk.Label(root, text="Designed by The University of Buckingham", font=(font_name, 10), foreground=secondary_color, background=primary_color)
     footer.pack(side=tk.BOTTOM, pady=10)
 
