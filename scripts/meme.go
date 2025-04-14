@@ -21,7 +21,7 @@ func main() {
 
 func meme(IQ int) string {
 	if (IQ <= 100)
-		return "You are not welcome here";
+		return httpcode(500)
 	else if (IQ > 100)
-		return "You are welcome here";
+		return httpcode(200)
 }
