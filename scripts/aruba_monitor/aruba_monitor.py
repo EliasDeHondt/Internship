@@ -2,7 +2,12 @@
 # @author Elias De Hondt   #
 # @since 01/01/2025        #
 ############################
-# type: ignore[annotation-unchecked]
+# git clone https://github.com/EliasDeHondt/Internship.git
+# cd Internship/scripts/aruba_monitor
+# pip install -r requirements.txt
+# pip install pyinstaller
+# pyinstaller --onefile --icon=favicon.ico aruba_monitor.py
+# dist/aruba_monitor.exe
 
 import requests
 import tkinter as tk
@@ -13,7 +18,6 @@ import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-# Kleuren en instellingen blijven ongewijzigd
 primary_color = "#1E1E1E"
 secondary_color = "#FFFFFF"
 accent_color = "#E9C43B"
