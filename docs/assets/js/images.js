@@ -19,12 +19,21 @@ document.addEventListener('DOMContentLoaded', () => {
         'mount-plaesant-before4.jpg',
         'mount-plaesant-before5.jpg',
         'mount-plaesant-before6.jpg',
-        'mount-plaesant-before7.jpg'
+        'none',
+        'none',
+        'office1.jpg',
+        'office2.jpg',
+        'office3.jpg'
     ];
 
     imageNames.forEach((imageName, index) => {
         const galleryItem = document.createElement('div');
         galleryItem.classList.add('images-item');
+
+        if (imageName === 'none') {
+            gallery.appendChild(galleryItem);
+            return;
+        }
 
         const img = document.createElement('img');
         img.src = `${imageFolder}${imageName}`;

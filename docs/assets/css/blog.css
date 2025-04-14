@@ -138,6 +138,12 @@ body {
     color: #555555;
 }
 
+.blog-post-text a {
+    color: var(--text);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
 .blog-animate-slide-in {
     animation: slideIn 1s ease-out;
 }
@@ -187,7 +193,7 @@ body {
     .blog-subtitle { font-size: 1.2rem; }
     .blog-btn { padding: 12px 25px; }
     .blog-main { padding: 40px 15px; }
-    .post-text { font-size: 1rem; }
+    .blog-post-text { font-size: 1rem; }
 }
 
 @media (max-width: 480px) {
