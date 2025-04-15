@@ -28,16 +28,16 @@ body {
 }
 
 .section {
-	display: table-cell;
-	vertical-align: middle;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .section h1 {
     color: #dda027;
-	font-size: 100px;
-	display: inline-block;
-	padding-right: 12px;
-	animation: type .5s alternate infinite;
+    font-size: 100px;
+    display: inline-block;
+    padding-right: 12px;
+    animation: type .5s alternate infinite;
 }
 
 .section p {
@@ -47,12 +47,11 @@ body {
     animation: type .5s alternate infinite;
 }
 
-@keyframes type{
-	from {
+@keyframes type {
+    from {
         box-shadow: inset -3px 0px 0px #dda027;
     }
-
-	to {
+    to {
         box-shadow: inset -3px 0px 0px transparent;
     }
 }
@@ -78,4 +77,102 @@ body {
     color: #ffffff;
     font-size: 26px;
     transition: width 1s linear;
+}
+
+.container {
+    width: 300px;
+    height: 110px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.clyde {
+    width: 100px;
+    height: 110px;
+    border-radius: 50px 50px 0px 0px;
+    overflow: hidden;
+    animation: clyde 1.5s infinite linear;
+}
+
+.clydetop {
+    width: 100px;
+    height: 95px;
+    background: #ff9f00;
+    border-radius: 50px 50px 0px 0px;
+}
+
+.tail {
+    width: 300px;
+    height: 15px;
+    animation: tail 1.5s infinite linear;
+    margin-top: -1px;
+}
+
+.triangle {
+    float: left;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid #ff9f00;
+}
+
+.righteye {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 30px;
+    left: 15px;
+    background: white;
+    border-radius: 50%;
+}
+
+.lefteye {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 0px;
+    left: 55px;
+    background: white;
+    border-radius: 50%;
+}
+
+.iris {
+    width: 10px;
+    height: 10px;
+    background: #4d3d14;
+    position: absolute;
+    top: 10px;
+    animation: iris 1.5s infinite linear;
+    border-radius: 50%;
+}
+
+@keyframes tail {
+    0% {
+        margin-left: 0px;
+    }
+    50% {
+        margin-left: -200px;
+    }
+}
+
+@keyframes clyde {
+    0% {
+        margin-left: 0px;
+    }
+    50% {
+        margin-left: 200px;
+    }
+}
+
+@keyframes iris {
+    0% {
+        left: 20px;
+    }
+    49% {
+        left: 20px;
+    }
+    50% {
+        left: 0px;
+    }
 }
