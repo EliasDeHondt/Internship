@@ -2,6 +2,6 @@ User-agent: *
 Allow: index.html
 Allow: /assets/
 
-Sitemap: https://internship-blog.eliasdh.com/sitemap.xml
+Sitemap: https://blog.buckingham.eliasdh.com/sitemap.xml
 
 Crawl-delay: 5
