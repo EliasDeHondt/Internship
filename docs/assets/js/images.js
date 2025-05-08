@@ -19,11 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
         'mount-plaesant-before4.jpg',
         'mount-plaesant-before5.jpg',
         'mount-plaesant-before6.jpg',
-        'none',
-        'none',
         'office1.jpg',
         'office2.jpg',
-        'office3.jpg'
+        'office3.jpg',
+        'the-radcliffe-centre1.jpg',
+        'the-radcliffe-centre2.jpg',
+        'the-radcliffe-centre3.jpg',
+        'the-radcliffe-centre4.jpg'
     ];
 
     imageNames.forEach((imageName, index) => {
