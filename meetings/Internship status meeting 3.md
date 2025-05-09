@@ -1,5 +1,7 @@
 # Internship status meeting 3
 
+- Date: 08-05-2025
+
 ## Report
 
 We began the meeting by reviewing our self-assessments and the mid-term evaluations written by Joe McMorrow. Our coach from KdG, Piet Boedt, was pleased with both. He appreciated the positive feedback in Joe’s assessments and found our self-assessments honest and thorough. Additionally, Piet enjoyed reading our blogs and expressed interest in seeing the final photos of our overhaul.
