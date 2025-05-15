@@ -11,8 +11,8 @@ Piet stressed the need for comprehensive documentation to facilitate a seamless 
 ## TODO
 
 - We should read up on the following topics:
-  - ITIL
-  - Change management
+    - ITIL
+    - Change management
 - We should communicate the date and time of our presentation about the internship with Joe McMorrow.
 
 ## Conclusion

@@ -1,228 +1,214 @@
-<!doctype html>
+<!DOCTYPE html>
+<!--Author EliasDH Team-->
 <html lang="en">
-
-<head>
-    <title>internship blog - kobe wijnants</title>
-    <meta charset="utf-8">
-    <meta name="robots" content="index, follow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="internship blog - kobe wijnants">
-    <meta property="og:description"
-        content="follow the internship journey of elias de hondt and kobe wijnants at the university of buckingham. weekly updates, project insights, and reflections.">
-    <meta name="description"
-        content="follow the internship journey of elias de hondt and kobe wijnants at the university of buckingham. weekly updates, project insights, and reflections.">
-    <meta name="author" content="elias de hondt, kobe wijnants">
-    <meta name="keywords"
-        content="internship, university of buckingham, network monitoring, blog, elias de hondt, kobe wijnants">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://blog.buckingham.eliasdh.com">
-    <meta property="og:image" content="/assets/media/images/logo.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="internship blog - kobe wijnants">
-    <meta name="twitter:description"
-        content="follow the internship journey of elias de hondt and kobe wijnants at the university of buckingham.">
-    <meta name="twitter:image" content="/assets/media/images/logo.png">
-    <meta name="theme-color" content="#dda027">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="/assets/media/images/icon-192x192.png">
-    <link rel="icon" href="/assets/media/icons/favicon.ico">
-    <link rel="stylesheet" href="/assets/css/blog.css">
-    <link rel="stylesheet" href="/assets/css/context-menu.css">
-</head>
-
-<body>
-    <header class="blog-header">
-        <div class="blog-content">
-            <h1 class="blog-title blog-animate-slide-in">internship blog</h1>
-            <p class="blog-subtitle blog-animate-fade-in">kobe wijnants at the university of buckingham</p>
-            <a href="#blog" class="blog-btn blog-animate-bounce-in cursor-pointer">explore the blog</a>
-            <a href="/assets/pages/images.html" class="blog-btn blog-animate-bounce-in cursor-pointer">explore the
-                gallery</a>
-        </div>
-    </header>
-    <main id="blog" class="blog-main">
-        <section class="blog-posts">
-            <article class="blog-post blog-animate-reveal">
-                <h2 class="blog-title">week 1</h2>
-                <p class="blog-post-text">
-                    the first week was quite chaotic. the person responsible for getting us started on our
-                    project was on vacation, and their replacements had no prior information about our assignment. this
-                    led to some confusion and delays, making it difficult to get up to speed right away. also it became
-                    clear that the projects that we agreed on before the start of the internship were not possible, this
-                    stressed me out a bit...
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    despite these challenges, we did manage to get a guided tour of the campus and an overview
-                    of the existing networking infrastructure. the network itself is a complete mess — previous it staff
-                    implemented a lot of questionable configurations, and most of the infrastructure is outdated and at
-                    the end of its lifecycle. however, this gave me a chance to learn more about network design,
-                    troubleshooting, and the importance of proper documentation.
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    on thursday our projects became concrete and we had a meeting with our kdg coach piet boedt and joe
-                    mcmorrow about our first week and what we would be doing. hopefully, we can build on this and start
-                    making real progress in the coming weeks.
-                </p>
-            </article>
-            <article class="blog-post blog-animate-reveal">
-                <h2 class="blog-title">easter holidays week 1</h2>
-                <p class="blog-post-text">
-                    we kicked off our second week by continuing the documentation of the existing network at the mount
-                    pleasant campus. this process helps us identify which parts of the network need to be redesigned or
-                    reconfigured.
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    on tuesday morning, we headed up to the loft at mount pleasant to inspect the networking rack again.
-                    it was quite a mess—lots of unused and pinched cables, along with several questionable design
-                    choices.
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    in the afternoon, we documented all our findings and began working on a python script to monitor
-                    vlan traffic. this will help us determine if any vlans are overloaded with too many access points.
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    thursday we completed our documentation of the mount pleasant building, we've succesfully identified
-                    every device on all of the ports. using this information we can start designing a new configuration
-                    for the network.
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    on friday we got our very own office inside the norton house. we've also talked to joe about our
-                    findings and set up a meeting with nick verdegem the enterprise architect of the university, where
-                    we will discuss our findings and our recommandations for the network.
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    if you want to see some pictures of our findings you can click on the "explore the
-                    gallery" button on the top of the page</p>
-            </article>
-            <article class="blog-post blog-animate-reveal">
-                <h2 class="blog-title">easter holidays – week 2</h2>
-                <p class="blog-post-text">
-                    our third week was a relaxed one, as we had a day off due to the "bank holidays" in the uk. during
-                    this week we tried to finish our documentation to then start planning how the new network should
-                    work.
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    we also had an insightful meeting with nick verdegem, the university’s enterprise architect. he
-                    shared valuable context about the ongoing digital transformation and the challenges inherited from
-                    previous teams. during the meeting, we presented our findings and outlined our plans for the coming
-                    weeks. nick seemed genuinely enthusiastic about our ideas.
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    as we wrapped up the documentation phase of our project, we revisited the mount pleasant network to
-                    take some initial photos. while exploring the existing setup, we came across a particularly odd
-                    configuration on a windows dhcp server. it first assigns a pool of addresses, then blacklists the
-                    entire range, and finally reserves a single address from that same pool for a specific mac address.
-                    this unconventional setup makes connecting new devices to the network unnecessarily complicated.
-                </p>
-            </article>
-            <article class="blog-post blog-animate-reveal">
-                <h2 class="blog-title">week 2</h2>
-                <p class="blog-post-text">
-                    the monday of our fourth week was another "bank holiday" so we started our
-                    week on tuesday, we had a look at the franciscian building where the second ups would be installed
-                    this was again a very unconventional server rack with many unexplainable bad practices.
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    on wednesday we had a meeting with piet boedt where we told him how everything
-                    was going the last few weeks. we also told him what we were going to do in the next couple of weeks.
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    on thursday i documented all of the servers in the server subnet, this way we
-                    could get an idea of what was running right now and what could be removed in the future. this was
-                    also handy to get an ideo of what services where connected to the mount pleasant network.
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    on friday we deployed an application called "netbox" this application could
-                    transform our excel that we made during the documentation phase in to a dashboard that can fully
-                    explain the whole network.
-                </p>
-            </article>
-            <article class="blog-post blog-animate-reveal">
-                <h2 class="blog-title">week 3</h2>
-                <p class="blog-post-text">
-                    even though this is labeled "week 3," this week actually marks our fifth week at the internship.
-                    time is flying by quickly as we continue to make progress on improving the university’s networking
-                    infrastructure.
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    one of our main focuses this week was improving the current dhcp and dns setup. the current
-                    configuration runs on a old windows server, and we’re working on creating a more modern,
-                    scalable solution that’s easier to manage and debug.
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    a major highlight of the week was a strategic meeting with joe, nick (the enterprise architect), and
-                    trevor (the it manager). together, we discussed the future of the mount pleasant network and the
-                    possibility of switching it over to a unifi setup. it was a productive session where we evaluated
-                    three possible scenarios:
-                <ol>
-                    <li>optimizing the current infrastructure</li>
-                    <li>partial migration to unifi</li>
-                    <li>full migration to unifi</li>
-                </ol>
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    as a result of this meeting, we were asked to prepare a presentation summarizing all available
-                    options, their pros and cons, and what implementation might look like.
-                </p>
-                <br>
-                <p class="blog-post-text">
-                    toward the end of the week, we explored a potential proof-of-concept unifi setup. this hands-on
-                    testing environment will help us validate if unifi can meet the university's performance,
-                    manageability, and scalability needs before committing to a larger migration.
-                </p>
-            </article>
-            <article class="blog-post blog-animate-reveal">
-                <h2 class="blog-title">week 4</h2>
-                <p class="blog-post-text">
-                        This week, we worked on an exciting side project at a former church converted into a lecture hall, known as "The Radcliffe Centre" (search it on Google!). Multiple reports highlighted "unusable" Wi-Fi in the building, so we investigated. Upon arrival, we conducted a speed test and found the connection never exceeded 45 MBit/s—insufficient for a venue hosting over 100 students simultaneously. We discovered that the DSL line entering the building was capped at 45 MBit/s. While there, we also tidied the network rack, removing outdated, unused hardware.
-                </p>
-                <p class="blog-post-text">
-                        On Thursday, we met with Piet, our coach from KDG. We reviewed our self-assessments and the report Joe wrote about us. The feedback was overwhelmingly positive, which was great to hear.
-                </p>
-            </article>
-            <article class="blog-post blog-animate-reveal">
-                <h2 class="blog-title">week 5</h2>
-                <p class="blog-post-text">[to be updated]</p>
-            </article>
-            <article class="blog-post blog-animate-reveal">
-                <h2 class="blog-title">week 6</h2>
-                <p class="blog-post-text">[to be updated]</p>
-            </article>
-            <article class="blog-post blog-animate-reveal">
-                <h2 class="blog-title">week 7</h2>
-                <p class="blog-post-text">[to be updated]</p>
-            </article>
-            <article class="blog-post blog-animate-reveal">
-                <h2 class="blog-title">week 8</h2>
-                <p class="blog-post-text">[to be updated]</p>
-            </article>
-            <article class="blog-post blog-animate-reveal">
-                <h2 class="blog-title">conclusion</h2>
-                <p class="blog-post-text">[to be written at the end of the internship. reflections on my journey and
-                    skills gained.]</p>
-            </article>
-        </section>
-    </main>
-    <footer class="footer" id="footer"></footer>
-    <span class="context-menu" id="context-menu"></span>
-    <script src="/assets/js/main.js"></script>
-    <script src="/assets/js/blog.js"></script>
-    <script src="/assets/js/context-menu.js"></script>
-</body>
-
+    <head>
+        <title>Internship Blog - Kobe Wijnants</title>
+        <meta charset="utf-8">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Internship Blog - Elias De Hondt">
+        <meta property="og:description" content="Follow the internship journey of Elias De Hondt and Kobe Wijnants at The University of Buckingham. Weekly updates, project insights, and reflections.">
+        <meta name="description" content="Follow the internship journey of Elias De Hondt and Kobe Wijnants at The University of Buckingham. Weekly updates, project insights, and reflections.">
+        <meta name="author" content="Elias De Hondt, Kobe Wijnants">
+        <meta name="keywords" content="internship, University of Buckingham, network monitoring, blog, Elias De Hondt, Kobe Wijnants">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://blog.buckingham.eliasdh.com">
+        <meta property="og:image" content="/assets/media/images/logo.png">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Internship Blog - Elias De Hondt">
+        <meta name="twitter:description" content="Follow the internship journey of Elias De Hondt and Kobe Wijnants at The University of Buckingham.">
+        <meta name="twitter:image" content="/assets/media/images/logo.png">
+        <meta name="theme-color" content="#dda027">
+        <link rel="manifest" href="/manifest.json">
+        <link rel="apple-touch-icon" href="/assets/media/images/icon-192x192.png">
+        <link rel="icon" href="/assets/media/icons/favicon.ico">
+        <link rel="stylesheet" href="/assets/css/blog.css">
+        <link rel="stylesheet" href="/assets/css/context-menu.css">
+    </head>
+    <body>
+        <header class="blog-header">
+            <div class="blog-content">
+                <h1 class="blog-title">Internship Blog</h1>
+                <p class="blog-subtitle blog-animate-fade-in">Kobe Wijnants at The University of Buckingham</p>
+                <a href="#blog" class="blog-btn blog-animate-bounce-in cursor-pointer">Explore the Blog</a>
+                <a href="/assets/pages/images.html" class="blog-btn blog-animate-bounce-in cursor-pointer">Explore the Gallery</a>
+            </div>
+        </header>
+        <main id="blog" class="blog-main">
+            <section class="blog-posts">
+                <article class="blog-post blog-animate-reveal">
+                    <h2 class="blog-title">Week 1</h2>
+                    <p class="blog-post-text">
+                        the first week was quite chaotic. the person responsible for getting us started on our
+                        project was on vacation, and their replacements had no prior information about our assignment. this
+                        led to some confusion and delays, making it difficult to get up to speed right away. also it became
+                        clear that the projects that we agreed on before the start of the internship were not possible, this
+                        stressed me out a bit...
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        Despite these challenges, we did manage to get a guided tour of the campus and an overview of the existing networking infrastructure. 
+                        The network itself is a complete mess — previous it staff implemented a lot of questionable configurations, and most of the infrastructure is outdated and at the end of its lifecycle. 
+                        However, this gave me a chance to learn more about network design, troubleshooting, and the importance of proper documentation.
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        On thursday our projects became concrete and we had a meeting with our KdG coach Piet Boedt and Joe
+                        McMorrow about our first week and what we would be doing. 
+                        Hopefully, we can build on this and start making real progress in the coming weeks.
+                    </p>
+                </article>
+                <article class="blog-post blog-animate-reveal">
+                    <h2 class="blog-title">Easter Holidays Week 1</h2>
+                    <p class="blog-post-text">
+                        We kicked off our second week by continuing the documentation of the existing network at the mount pleasant campus. 
+                        This process helps us identify which parts of the network need to be redesigned or reconfigured.
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        On tuesday morning, we headed up to the loft at mount pleasant to inspect the networking rack again.
+                        It was quite a mess—lots of unused and pinched cables, along with several questionable design choices.
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        In the afternoon, we documented all our findings and began working on a python script to monitor vlan traffic. 
+                        This will help us determine if any vlans are overloaded with too many access points.
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        Thursday we completed our documentation of the mount pleasant building, we've succesfully identified every device on all of the ports. using this information we can start designing a new configuration for the network.
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        On friday we got our very own office inside the norton house.
+                        We've also talked to Joe about our findings and set up a meeting with Nick Verdegem the enterprise architect of the university, where we will discuss our findings and our recommandations for the network.
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        If you want to see some pictures of our findings you can click on the "explore the gallery" button on the top of the page.
+                    </p>
+                </article>
+                <article class="blog-post blog-animate-reveal">
+                    <h2 class="blog-title">Easter Holidays Week 2</h2>
+                    <p class="blog-post-text">
+                        Our third week was a relaxed one, as we had a day off due to the "bank holidays" in the uk. 
+                        During this week we tried to finish our documentation to then start planning how the new network should work.
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        We also had an insightful meeting with Nick Verdegem, the university’s enterprise architect. 
+                        He shared valuable context about the ongoing digital transformation and the challenges inherited from previous teams. 
+                        during the meeting, we presented our findings and outlined our plans for the coming weeks. 
+                        Nick seemed genuinely enthusiastic about our ideas.
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        As we wrapped up the documentation phase of our project, we revisited the mount pleasant network to take some initial photos. 
+                        While exploring the existing setup, we came across a particularly odd configuration on a windows dhcp server. 
+                        It first assigns a pool of addresses, then blacklists the entire range, and finally reserves a single address from that same pool for a specific mac address.
+                        This unconventional setup makes connecting new devices to the network unnecessarily complicated.
+                    </p>
+                </article>
+                <article class="blog-post blog-animate-reveal">
+                    <h2 class="blog-title">Week 2</h2>
+                    <p class="blog-post-text">
+                        The monday of our fourth week was another "bank holiday" so we started our week on tuesday, we had a look at the franciscian building where the second ups would be installed this was again a very unconventional server rack with many unexplainable bad practices.
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        On wednesday we had a meeting with piet boedt where we told him how everything was going the last few weeks. 
+                        We also told him what we were going to do in the next couple of weeks.
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        On thursday i documented all of the servers in the server subnet, this way we could get an idea of what was running right now and what could be removed in the future. 
+                        This was also handy to get an ideo of what services where connected to the mount pleasant network.
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        On friday we deployed an application called "NetBox" this application could transform our excel that we made during the documentation phase in to a dashboard that can fully explain the whole network.
+                    </p>
+                </article>
+                <article class="blog-post blog-animate-reveal">
+                    <h2 class="blog-title">Week 3</h2>
+                    <p class="blog-post-text">
+                        Even though this is labeled "week 3," this week actually marks our fifth week at the internship.
+                        Time is flying by quickly as we continue to make progress on improving the university’s networking infrastructure.
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        One of our main focuses this week was improving the current dhcp and dns setup. 
+                        The current configuration runs on a old windows server, and we’re working on creating a more modern, scalable solution that’s easier to manage and debug.
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        A major highlight of the week was a strategic meeting with Joe, Nick (the enterprise architect), and trevor (the it manager).
+                        Together, we discussed the future of the mount pleasant network and the possibility of switching it over to a unifi setup. 
+                        It was a productive session where we evaluated three possible scenarios:
+                        - Optimizing the current infrastructure
+                        - Partial migration to unifi
+                        - Full migration to unifi
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        As a result of this meeting, we were asked to prepare a presentation summarizing all available options, their pros and cons, and what implementation might look like.
+                    </p>
+                    <br>
+                    <p class="blog-post-text">
+                        Toward the end of the week, we explored a potential proof-of-concept unifi setup. this hands-on testing environment will help us validate if unifi can meet the university's performance, manageability, and scalability needs before committing to a larger migration.
+                    </p>
+                </article>
+                <article class="blog-post blog-animate-reveal">
+                    <h2 class="blog-title">Week 4</h2>
+                    <p class="blog-post-text">
+                        This week, we worked on an exciting side project at a former church converted into a lecture hall, known as "The Radcliffe Centre" (search it on Google!). 
+                        Multiple reports highlighted "unusable" Wi-Fi in the building, so we investigated. 
+                        Upon arrival, we conducted a speed test and found the connection never exceeded 45 MBit/s—insufficient for a venue hosting over 100 students simultaneously. 
+                        We discovered that the DSL line entering the building was capped at 45 MBit/s. 
+                        While there, we also tidied the network rack, removing outdated, unused hardware.
+                    </p>
+                    <p class="blog-post-text">
+                        On Thursday, we met with Piet, our coach from KDG. 
+                        We reviewed our self-assessments and the report Joe wrote about us. 
+                        The feedback was overwhelmingly positive, which was great to hear.
+                    </p>
+                </article>
+                <article class="blog-post blog-animate-reveal">
+                    <h2 class="blog-title">Week 5</h2>
+                    <p class="blog-post-text">
+                        [to be updated]
+                    </p>
+                </article>
+                <article class="blog-post blog-animate-reveal">
+                    <h2 class="blog-title">Week 6</h2>
+                    <p class="blog-post-text">
+                        [to be updated]
+                    </p>
+                </article>
+                <article class="blog-post blog-animate-reveal">
+                    <h2 class="blog-title">Week 7</h2>
+                    <p class="blog-post-text">
+                        [to be updated]
+                    </p>
+                </article>
+                <article class="blog-post blog-animate-reveal">
+                    <h2 class="blog-title">Week 8</h2>
+                    <p class="blog-post-text">
+                        [to be updated]
+                    </p>
+                </article>
+                <article class="blog-post blog-animate-reveal">
+                    <h2 class="blog-title">Conclusion</h2>
+                    <p class="blog-post-text">
+                        [to be written at the end of the internship. reflections on my journey and skills gained.]
+                    </p>
+                </article>
+            </section>
+        </main>
+        <footer class="footer" id="footer"></footer>
+        <span class="context-menu" id="context-menu"></span>
+        <script src="/assets/js/main.js"></script>
+        <script src="/assets/js/blog.js"></script>
+        <script src="/assets/js/context-menu.js"></script>
+    </body>
 </html>
