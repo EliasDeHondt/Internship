@@ -25,7 +25,23 @@ document.addEventListener('DOMContentLoaded', () => {
         'the-radcliffe-centre1.jpg',
         'the-radcliffe-centre2.jpg',
         'the-radcliffe-centre3.jpg',
-        'the-radcliffe-centre4.jpg'
+        'the-radcliffe-centre4.jpg',
+        'mount-plaesant-after1.jpg',
+        'UWC-2025-1.jpg',
+        'UWC-2025-2.jpg',
+        'UWC-2025-3.jpg',
+        'UWC-2025-3.jpg',
+        'UWC-2025-4.jpg',
+        'UWC-2025-5.jpg',
+        'UWC-2025-6.jpg',
+        'UWC-2025-7.jpg',
+        'UWC-2025-8.jpg',
+        'UWC-2025-9.jpg',
+        'UWC-2025-10.jpg',
+        'UWC-2025-11.jpg',
+        'UWC-2025-12.jpg',
+        'UWC-2025-13.jpg',
+        'UWC-2025-14.jpg'
     ];
 
     imageNames.forEach((imageName, index) => {
