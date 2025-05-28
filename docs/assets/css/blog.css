@@ -42,7 +42,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('/assets/media/images/blog-background.png') repeat;
+    background: url('https://eliasdehondt.github.io/Internship/assets/media/images/blog-background.png') repeat;
     background-size: cover;
     opacity: 0.3;
     z-index: 0;
