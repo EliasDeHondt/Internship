@@ -90,7 +90,7 @@ class ArubaMonitor:
             return response.json()
         except requests.exceptions.RequestException as error:
             return f"Error: {error}"
-        
+
     def get_interface_by_name(self, interface_name):
         if not self.session_cookie:
             return None
