@@ -4,7 +4,7 @@
     * @since 01/01/2025
 **/
 
-@import url('/assets/css/globel.css');
+@import url('https://eliasdehondt.github.io/Internship/assets/css/globel.css');
 
 .index-body,
 .index-html,
@@ -46,11 +46,11 @@
 }
 
 .index-location.index-eliasdehondt {
-    background-image: url('/assets/media/images/index-eliasdehondt.png');
+    background-image: url('https://eliasdehondt.github.io/Internship/assets/media/images/index-eliasdehondt.png');
 }
 
 .index-location.index-kobewijnants {
-    background-image: url('/assets/media/images/index-kobewijnants.png');
+    background-image: url('https://eliasdehondt.github.io/Internship/assets/media/images/index-kobewijnants.png');
 }
 
 .index-location:hover {

@@ -5,13 +5,13 @@
 **/
 
 document.addEventListener('DOMContentLoaded', function() {
-    loadExternalContent("context-menu", "/assets/includes/context-menu.html");
-    loadExternalContent("footer", "https://eliasdh.com/assets/includes/external-footer.html");
+    loadExternalContent("context-menu", "https://eliasdehondt.github.io/Internship/assets/includes/context-menu.html");
+    loadExternalContent("footer", "https://eliasdehondt.github.io/Internship/assets/includes/external-footer.html");
 });
 
 document.addEventListener('DOMContentLoaded', () => {
     const gallery = document.getElementById('gallery-data');
-    const imageFolder = '/assets/media/images/gallery/';
+    const imageFolder = 'https://eliasdehondt.github.io/Internship/assets/media/images/gallery/';
     const imageNames = [
         'mount-plaesant-before1.jpg',
         'mount-plaesant-before2.jpg',
